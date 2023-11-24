@@ -22,14 +22,14 @@ public class Router {
                 .nest(path("/teams"), RouterFunctions
                                     .route(GET("/{name}").and(accept(MediaType.APPLICATION_JSON)), teamHandler::findByName)
                                     .andRoute(GET("/id/{id}").and(accept(MediaType.APPLICATION_JSON)), teamHandler::findById)
-                                    .andRoute(POST("/").and(accept(MediaType.APPLICATION_JSON)), teamHandler::addTeam)
+                                    .andRoute(POST("/create").and(accept(MediaType.APPLICATION_JSON)), teamHandler::addTeam)
                                     .andRoute(DELETE("/{id}").and(accept(MediaType.APPLICATION_JSON)), teamHandler::deleteTeam))
                 .andNest(path("/users"), RouterFunctions
                                     .route(GET("/id/{id}").and(accept(MediaType.APPLICATION_JSON)), userHandler::findById)
                                     .andRoute(GET("/{username}").and(accept(MediaType.APPLICATION_JSON)), userHandler::findByUsername)
-                                    .andRoute(POST("/").and(accept(MediaType.APPLICATION_JSON)), userHandler::createUser)
+                                    .andRoute(POST("/create").and(accept(MediaType.APPLICATION_JSON)), userHandler::createUser)
                                     .andRoute(DELETE("/{id}").and(accept(MediaType.APPLICATION_JSON)), userHandler::deleteUser))
                 .andNest(path("/time-entries"), RouterFunctions
-                                    .route(POST("/").and(accept(MediaType.APPLICATION_JSON)), timeEntryHandler::addTimeEntry));
+                                    .route(POST("/create").and(accept(MediaType.APPLICATION_JSON)), timeEntryHandler::addTimeEntry));
     }
 }
