@@ -1,9 +1,6 @@
 package org.kyi.reactivetimesheet.domain.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.kyi.reactivetimesheet.domain.user.dto.GetUserDto;
 import org.kyi.reactivetimesheet.domain.user.type.Role;
 import org.kyi.reactivetimesheet.persistence.entity.UserEntity;
@@ -11,6 +8,8 @@ import org.kyi.reactivetimesheet.persistence.entity.UserEntity;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 @EqualsAndHashCode
 public class User {
     String id;
