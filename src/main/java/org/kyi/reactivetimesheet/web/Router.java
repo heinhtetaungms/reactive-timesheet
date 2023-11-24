@@ -6,17 +6,18 @@ import org.kyi.reactivetimesheet.web.handlers.UserHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
 @Configuration
-public class RouterFunction {
+public class Router {
 
     // first argument of the router function is a request predicate, second - handler function
     @Bean
-    public org.springframework.web.reactive.function.server.RouterFunction<ServerResponse> routerFunction(TeamHandler teamHandler, TimeEntryHandler timeEntryHandler, UserHandler userHandler) {
+    public RouterFunction<ServerResponse> routerFunction(TeamHandler teamHandler, TimeEntryHandler timeEntryHandler, UserHandler userHandler) {
         return RouterFunctions
                 .nest(path("/teams"), RouterFunctions
                                     .route(GET("/{name}").and(accept(MediaType.APPLICATION_JSON)), teamHandler::findByName)
